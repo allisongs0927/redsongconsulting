@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redsong Consulting — AI · Automation · Analytics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:       #C8352A;
+      --red-deep:  #8B1F16;
+      --red-light: #E8554A;
+      --cream:     #F7F2EA;
+      --warm-white:#FDFAF5;
+      --ink:       #1A1410;
+      --ink-mid:   #3D342C;
+      --ink-light: #7A6E65;
+      --rule:      #DDD5C8;
+      --gold:      #B8962E;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink);
+      background: var(--warm-white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(253,250,245,0.97);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 6%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 110px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 100px; width: auto;
+    }
+    .nav-logo-text {
+      display: flex; flex-direction: column; line-height: 1;
+    }
+    .nav-logo-text .wordmark {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      text-transform: uppercase;
+    }
+    .nav-logo-text .sub {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      font-weight: 400;
+      margin-top: 1px;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink-light);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--red); }
+
+    /* ── HERO ── */
+    .hero {
+      padding-top: 110px;
+      background: var(--cream);
+      min-height: 90vh;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      align-items: stretch;
+    }
+
+    /* LEFT — headline */
+    .hero-left {
+      padding: 5rem 5% 5rem 6%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--rule);
+    }
+    .hero-kicker {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      line-height: 1.05;
+      margin-bottom: 2rem;
+    }
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      max-width: 420px;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-red {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.9rem 1.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn-red:hover { background: var(--red-deep); }
+    .btn-red::after { content: '▶'; font-size: 0.65rem; }
+    .btn-ghost {
+      display: inline-block;
+      border: 1.5px solid var(--ink-mid);
+      color: var(--ink-mid);
+      text-decoration: none;
+      padding: 0.88rem 1.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--red); color: var(--red); }
+
+    /* RIGHT — logo + tagline */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 4rem 5% 4rem 4%;
+      gap: 0.4rem;
+    }
+    .hero-logo img {
+      height: 250px; width: auto;
+    }
+    .hero-eyebrow {
+      font-size: 1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 5rem 6%; }
+    .sec-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 2.8vw, 2.3rem);
+      color: var(--ink);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .sec-intro {
+      font-size: 0.975rem;
+      color: var(--ink-light);
+      max-width: 580px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    /* ── PROBLEM / SOLUTION ── */
+    #value { background: var(--warm-white); }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 960px;
+    }
+    .val-block {}
+    .val-block .label {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      font-weight: 500;
+      margin-bottom: 0.7rem;
+    }
+    .val-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    .val-block p {
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    .val-block p strong { color: var(--ink); font-weight: 500; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--cream); }
+    .services-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .svc {
+      padding: 1.75rem 1.5rem;
+      border-right: 1px solid var(--rule);
+      transition: background 0.2s;
+    }
+    .svc:last-child { border-right: none; }
+    .svc:hover { background: var(--warm-white); }
+    .svc-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--rule);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+    .svc h3 {
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.01em;
+    }
+    .svc p {
+      font-size: 0.82rem;
+      color: var(--ink-light);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* Who we serve */
+    #clients { background: var(--warm-white); }
+    .clients-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 860px;
+    }
+    .clients-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .clients-list li {
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      padding-left: 1.1rem;
+      position: relative;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+    .clients-list li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: var(--red);
+      font-size: 0.8rem;
+    }
+    .why-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .why-list li {
+      font-size: 0.88rem;
+      color: var(--ink-mid);
+      padding-left: 1.1rem;
+      position: relative;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    .why-list li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: var(--red);
+      font-size: 0.8rem;
+    }
+    .why-list li strong { color: var(--ink); font-weight: 500; }
+
+    /* ── WHY NOW BAND ── */
+    #why-now {
+      background: var(--ink);
+      padding: 5rem 6%;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .why-stat-box {
+      background: #1A1410;
+      border: 1px solid #2E2620;
+      border-radius: 4px;
+      padding: 2rem 2.5rem;
+      text-align: center;
+      min-width: 160px;
+    }
+    .why-stat-box .big {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: var(--red-light);
+      font-weight: 700;
+      line-height: 1;
+    }
+    .why-stat-box .small {
+      font-size: 0.72rem;
+      color: #6A5E55;
+      margin-top: 0.5rem;
+      line-height: 1.5;
+    }
+    #why-now .sec-eyebrow { color: var(--red-light); }
+    #why-now h2 {
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    #why-now p {
+      font-size: 0.9rem;
+      color: #A09488;
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 560px;
+    }
+    #why-now p strong { color: var(--cream); font-weight: 500; }
+
+    /* ── APPROACH ── */
+    #approach { background: var(--cream); }
+    .steps { display: flex; flex-direction: column; gap: 0; max-width: 720px; }
+    .step {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      flex: 0 0 36px; height: 36px;
+      background: var(--red);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 600;
+      font-size: 0.8rem;
+      font-family: 'Playfair Display', serif;
+    }
+    .step h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; color: var(--ink); }
+    .step p { font-size: 0.875rem; color: var(--ink-light); line-height: 1.65; font-weight: 300; }
+
+    /* ── CTA BAND ── */
+    #book {
+      background: var(--red);
+      padding: 5rem 6%;
+      text-align: center;
+    }
+    #book h2 { color: #fff; margin-bottom: 0.75rem; }
+    #book p { color: rgba(255,255,255,0.82); font-size: 1rem; font-weight: 300; max-width: 500px; margin: 0 auto 2rem; }
+    .btn-white {
+      display: inline-block;
+      background: #fff;
+      color: var(--red);
+      text-decoration: none;
+      padding: 0.9rem 2.2rem;
+      border-radius: 2px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+    }
+    .btn-white:hover { opacity: 0.92; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--warm-white); }
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 860px;
+    }
+    .contact-info p {
+      font-size: 0.9rem; color: var(--ink-light); margin-bottom: 1.5rem;
+      line-height: 1.75; font-weight: 300;
+    }
+    .c-row {
+      display: flex; gap: 0.75rem; align-items: baseline;
+      margin-bottom: 0.8rem;
+    }
+    .c-row .ico { font-size: 0.85rem; }
+    .c-row a, .c-row span {
+      font-size: 0.875rem; color: var(--ink-mid); text-decoration: none;
+    }
+    .c-row a:hover { color: var(--red); }
+
+    form { display: flex; flex-direction: column; gap: 0.9rem; }
+    form input, form textarea {
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      padding: 0.75rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      color: var(--ink);
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    form input:focus, form textarea:focus { border-color: var(--red); }
+    form textarea { min-height: 110px; resize: vertical; }
+    form button {
+      background: var(--ink);
+      color: #fff;
+      border: none;
+      padding: 0.82rem 1.75rem;
+      border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.875rem;
+      cursor: pointer;
+      align-self: flex-start;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+    }
+    form button:hover { background: var(--red); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      padding: 1.75rem 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .footer-brand img {
+      height: 40px; width: auto;
+      /* logo on dark bg — if needed add a brightness filter */
+      filter: brightness(0) invert(1) opacity(0.85);
+    }
+    .footer-brand span {
+      font-family: 'Playfair Display', serif;
+      font-style: italic; font-size: 1rem; color: var(--cream);
+    }
+    .footer-info {
+      font-size: 0.78rem;
+      color: #7A6E65;
+      text-align: right;
+      line-height: 1.8;
+    }
+    .footer-info a { color: #7A6E65; text-decoration: none; }
+    .footer-info a:hover { color: var(--red-light); }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { border-right: none; border-bottom: 1px solid var(--rule); }
+      .two-col, .clients-grid, .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
+      .services-strip { grid-template-columns: 1fr 1fr; }
+      .svc { border-bottom: 1px solid var(--rule); }
+      #why-now { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 540px) {
+      .services-strip { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="redsong-logo.png" alt="Redsong Consulting logo" onerror="this.style.display='none'" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-kicker">Stop operating<br>on manual.</p>
+      <p class="hero-sub">
+        Your team is talented. They shouldn't be spending their day on copy-paste, manual follow-ups, and administrative busywork. Redsong Consulting builds the AI foundation that sets them free.
+      </p>
+      <div class="hero-ctas">
+        <a href="https://calendly.com/allison-redsongconsulting/30min" class="btn-red" target="_blank">Schedule a Free Discovery Call</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-logo">
+        <img src="redsong-logo.png" alt="Redsong Consulting" onerror="this.style.display='none'" />
+      </div>
+      <p class="hero-eyebrow">AI · Automation · Analytics</p>
+    </div>
+  </section>
+
+  <!-- PROBLEM / SOLUTION -->
+  <section id="value">
+    <div class="two-col">
+      <div class="val-block">
+        <div class="label">The Problem</div>
+        <h3>AI is everywhere. Useful AI in your business is rare.</h3>
+        <p>
+          Most businesses have heard the AI pitch. Some have tried a tool or two. But there's a wide gap between <strong>signing up for software and actually transforming how your business runs.</strong><br><br>
+          Without a real foundation — the right tools, connected properly, built into your actual workflows — AI stays a novelty. Your team keeps doing things the slow way.
+        </p>
+      </div>
+      <div class="val-block">
+        <div class="label">The Solution</div>
+        <h3>A trusted partner who builds it, runs it, and grows it with you</h3>
+        <p>
+          Redsong designs and implements <strong>an AI and automation foundation built specifically for your business</strong> — not a generic stack, not a demo. We connect the right tools to your real workflows, automate what shouldn't require human hands, and give your team back the hours they've been losing.<br><br>
+          Then we stay in your corner to keep it working as your business evolves.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <p class="sec-eyebrow">What We Do</p>
+    <h2>Services</h2>
+    <p class="sec-intro">Four focused offerings that cover the full journey — from building your foundation to sustaining it.</p>
+    <div class="services-strip">
+      <div class="svc">
+        <div class="svc-num">01</div>
+        <h3>AI Foundation Build</h3>
+        <p>Assess your operations, select the right AI tools, and implement a connected foundation that actually works in your business.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">02</div>
+        <h3>Process Automation</h3>
+        <p>Map and eliminate your most painful manual workflows — from client intake and reporting to invoicing, follow-ups, and internal handoffs.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">03</div>
+        <h3>Analytics &amp; Reporting</h3>
+        <p>Clear visibility into the numbers that matter — dashboards and reports your team will actually use to make faster, smarter decisions.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">04</div>
+        <h3>Ongoing Partnership</h3>
+        <p>Monthly retainer support to maintain, optimize, and expand your AI foundation as your business grows.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE + WHY REDSONG -->
+  <section id="clients">
+    <div class="clients-grid">
+      <div>
+        <p class="sec-eyebrow">Who We Serve</p>
+        <h2>Small businesses ready to stop operating on manual</h2>
+        <p class="sec-intro" style="margin-bottom:1.5rem;">We work with businesses that are growing but operationally stretched — good at what they do, but losing time and money to processes that haven't kept up.</p>
+        <ul class="clients-list">
+          <li>Regional manufacturers &amp; distributors</li>
+          <li>Healthcare &amp; professional services</li>
+          <li>Specialty retail &amp; e-commerce</li>
+          <li>Logistics &amp; supply chain operations</li>
+          <li>Any business where people are doing work a well-built system should handle</li>
+        </ul>
+      </div>
+      <div>
+        <p class="sec-eyebrow">Why Redsong</p>
+        <h2>Enterprise experience. Built for your scale.</h2>
+        <ul class="why-list">
+          <li><strong>We implement, not just advise</strong> — we build the thing, train your team, and make sure it sticks</li>
+          <li><strong>20+ years of real-world operations experience</strong> — global programs at MillerKnoll and Perrigo serving hundreds of stakeholders</li>
+          <li><strong>No learning curve on your dime</strong> — we've navigated complex systems and change management before</li>
+          <li><strong>West Michigan based</strong> — local, accessible, and accountable in a way a national firm never will be</li>
+          <li><strong>Flexible engagement</strong> — start with a focused project; grow into an ongoing partnership</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY NOW -->
+  <section id="why-now">
+    <div class="why-stat-box">
+      <div class="big">83%</div>
+      <div class="small">of SMBs are not<br>using AI in any<br>meaningful way</div>
+    </div>
+    <div>
+      <p class="sec-eyebrow">Why the Timing Is Right</p>
+      <h2>The gap between early movers and everyone else is widening now</h2>
+      <p>
+        AI tools have crossed a threshold: they are <strong>powerful, affordable, and ready to deploy</strong> in businesses of any size. But implementation still requires expertise most small businesses don't have in-house — and that's exactly where the opportunity lives.<br><br>
+        <strong>The businesses building their AI foundation today will operate with advantages their competitors won't be able to replicate in two years.</strong> Redsong exists to make sure your business is one of them.
+      </p>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section id="approach">
+    <p class="sec-eyebrow">How We Work</p>
+    <h2>A Structured Path to Results</h2>
+    <p class="sec-intro">Every engagement follows a proven lifecycle that embeds quality and usability at every stage — no surprises, no scope creep.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h3>Discovery &amp; Assessment</h3>
+          <p>We start by understanding your most critical pain points, existing tools, data landscape, and where your team's time is actually going.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h3>Design &amp; Tool Selection</h3>
+          <p>We map the right AI and automation stack to your specific workflows — not a generic off-the-shelf recommendation, but a purpose-built plan.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h3>Build, Test &amp; Train</h3>
+          <p>We implement, validate with your team, and run structured testing before anything goes live. Your staff is trained and confident before we hand over the keys.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <h3>Launch &amp; Ongoing Support</h3>
+          <p>Go-live with hypercare support, then transition to an ongoing retainer — maintaining, optimizing, and expanding your foundation as your needs evolve.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section id="book">
+    <h2>Ready to see what your business looks like when it runs on AI?</h2>
+    <p>Book a free 30-minute discovery call. No pitch, no pressure — just a real conversation about your biggest operational challenges.</p>
+    <a href="https://calendly.com/allison-redsongconsulting/30min" class="btn-white" target="_blank">Schedule a Discovery Call →</a>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="sec-eyebrow">Get in Touch</p>
+    <h2>Contact</h2>
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <p>Whether you're exploring AI for the first time or looking to scale what you've started — let's talk. I'm based in Grand Rapids and work with businesses across West Michigan and beyond.</p>
+        <div class="c-row"><span class="ico">👤</span><span>Allison Stroud, Founder</span></div>
+        <div class="c-row"><span class="ico">📧</span><a href="mailto:allison@redsongconsulting.com">allison@redsongconsulting.com</a></div>
+        <div class="c-row"><span class="ico">📞</span><a href="tel:7732209147">773.220.9147</a></div>
+        <div class="c-row"><span class="ico">💼</span><a href="https://linkedin.com/in/allisongstroud" target="_blank">linkedin.com/in/allisongstroud</a></div>
+        <div class="c-row"><span class="ico">📅</span><a href="https://calendly.com/allison-redsongconsulting/30min" target="_blank">Book a free 30-minute call</a></div>
+      </div>
+      <form onsubmit="handleSubmit(event)">
+        <input type="text" placeholder="Your name" required />
+        <input type="email" placeholder="Your email" required />
+        <input type="text" placeholder="Company" />
+        <textarea placeholder="Tell me about your biggest operational challenge…"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">
+      <img src="redsong-logo.png" alt="Redsong Consulting" onerror="this.style.display='none'" />
+      <span>Redsong Consulting</span>
+    </div>
+    <div class="footer-info">
+      © 2026 Redsong Consulting · Allison Stroud · Grand Rapids, MI<br>
+      <a href="mailto:allison@redsongconsulting.com">allison@redsongconsulting.com</a>
+    </div>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'Sent ✓';
+      btn.style.background = '#2D7A4F';
+      btn.disabled = true;
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
