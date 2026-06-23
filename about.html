@@ -259,10 +259,68 @@
     .footer-info a { color: #7A6E65; text-decoration: none; }
     .footer-info a:hover { color: var(--red-light); }
 
+    /* ── HAMBURGER ── */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     @media (max-width: 768px) {
-      .about-hero { grid-template-columns: 1fr; }
-      .headshot-wrap { width: 200px; }
+      /* Nav */
+      nav { height: 80px; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 80px; left: 0; right: 0;
+        flex-direction: column;
+        background: rgba(253,250,245,0.98);
+        border-bottom: 1px solid var(--rule);
+        padding: 1rem 6%;
+        gap: 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { border-bottom: 1px solid var(--rule); }
+      .nav-links li:last-child { border-bottom: none; }
+      .nav-links a { display: block; padding: 0.9rem 0; font-size: 0.95rem; }
+
+      /* Hero */
+      .about-hero {
+        grid-template-columns: 1fr;
+        padding-top: 6rem;
+      }
+      .headshot-wrap { width: 180px; }
+
+      /* Sections */
+      section { padding: 3rem 6%; }
       .cred-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-info { text-align: center; }
+      .cta-row { flex-direction: column; }
+      .btn-red, .btn-ghost { text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .chips { gap: 0.4rem; }
+      .chip { font-size: 0.72rem; padding: 0.3rem 0.7rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2rem; }
     }
   </style>
 </head>
@@ -270,8 +328,11 @@
 
   <nav>
     <a href="index.html" class="nav-logo">
-      <img src="redsong-logo.png" alt="Redsong Consulting" onerror="this.style.display='none'" />
+      <img src="redsong-dot.png" alt="Redsong Consulting" onerror="this.style.display='none'" />
     </a>
+    <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
     <ul class="nav-links">
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#approach">Approach</a></li>
