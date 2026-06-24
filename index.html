@@ -363,25 +363,63 @@
 
     /* ── APPROACH ── */
     #approach { background: var(--cream); }
-    .steps { display: flex; flex-direction: column; gap: 0; max-width: 720px; }
-    .step {
-      display: flex; gap: 1.5rem; align-items: flex-start;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--rule);
+    .how-it-works {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 0;
+      align-items: center;
+      max-width: 900px;
     }
-    .step:last-child { border-bottom: none; }
-    .step-num {
-      flex: 0 0 36px; height: 36px;
-      background: var(--red);
-      color: #fff;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
+    .hiw-step {
+      background: var(--warm-white);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 2rem 1.75rem;
+      text-align: center;
+    }
+    .hiw-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .hiw-num {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
       font-weight: 600;
-      font-size: 0.8rem;
-      font-family: 'Playfair Display', serif;
+      margin-bottom: 0.4rem;
     }
-    .step h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; color: var(--ink); }
-    .step p { font-size: 0.875rem; color: var(--ink-light); line-height: 1.65; font-weight: 300; }
+    .hiw-step h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
+    .hiw-step p { font-size: 0.875rem; color: var(--ink-light); line-height: 1.7; font-weight: 300; }
+    .hiw-arrow {
+      font-size: 1.5rem;
+      color: var(--red);
+      font-weight: 300;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    /* ── FIT SECTION ── */
+    #fit { background: var(--warm-white); }
+    .fit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      max-width: 860px;
+    }
+    .fit-check {
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--red);
+      border-radius: 3px;
+      padding: 1rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      line-height: 1.55;
+      font-weight: 300;
+    }
 
     /* ── CTA BAND ── */
     #book {
@@ -554,6 +592,9 @@
       /* Sections */
       section { padding: 3rem 6%; }
       .two-col, .clients-grid, .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
+      .how-it-works { grid-template-columns: 1fr; max-width: 100%; }
+      .hiw-arrow { transform: rotate(90deg); padding: 0.5rem 0; }
+      .fit-grid { grid-template-columns: 1fr; }
       .services-strip { grid-template-columns: 1fr 1fr; }
       .svc { border-bottom: 1px solid var(--rule); }
       #why-now { grid-template-columns: 1fr; padding: 3rem 6%; }
@@ -598,17 +639,17 @@
       </div>
     </div>
     <div class="hero-left">
-      <p class="hero-kicker">Stop operating on manual.</p>
+      <p class="hero-kicker">Stop Operating on Manual</p>
       <p class="hero-sub">
-        Your team is talented. They shouldn't be spending their day on copy-paste, manual follow-ups, and administrative busywork. Redsong Consulting builds the AI foundation that sets them free.
+        If your team is buried in copy-paste, chasing down follow-ups, or spending hours on reports that should take minutes — that's not a people problem. That's a systems problem. Redsong Consulting fixes it.
       </p>
       <div class="hero-ctas">
-        <a href="https://calendar.app.google/TD5XZi9iL937SfsC8" class="btn-red" target="_blank">Schedule a Free Discovery Call</a>
+        <a href="https://calendar.app.google/TD5XZi9iL937SfsC8" class="btn-red" target="_blank">Let's Talk — 30 Min, No Obligation</a>
       </div>
     </div>
   </section>
 
-  <!-- PROBLEM / SOLUTION -->
+      <!-- PROBLEM / SOLUTION -->
   <section id="value">
     <div class="two-col">
       <div class="val-block">
@@ -628,7 +669,64 @@
         </p>
       </div>
     </div>
+  </section> 
+  
+  <!-- IS THIS FOR YOU -->
+  <section id="fit">
+    <p class="sec-eyebrow">Is This for You?</p>
+    <h2>You might be a perfect fit if…</h2>
+    <p class="sec-intro">You don't need to know anything about technology or AI to work with us. You just need to recognize yourself in a few of these:</p>
+    <div class="fit-grid">
+      <div class="fit-check">✅ You're still tracking things in spreadsheets — and it's starting to break down</div>
+      <div class="fit-check">✅ Your team does the same task more than 3 times a week and it drives everyone crazy</div>
+      <div class="fit-check">✅ You've heard about AI tools but don't know where to start — or tried one and nothing stuck</div>
+      <div class="fit-check">✅ You spend more time on admin than on the work you actually started this business to do</div>
+      <div class="fit-check">✅ You feel like your competitors are moving faster and you're not sure how to catch up</div>
+      <div class="fit-check">✅ You want someone local, accountable, and easy to talk to — not a faceless national vendor</div>
+    </div>
+    <div style="margin-top: 2.5rem;">
+      <a href="https://calendar.app.google/TD5XZi9iL937SfsC8" class="btn-red" target="_blank">That sounds like me — let's talk</a>
+    </div>
   </section>
+  
+   
+
+  
+  <!-- APPROACH -->
+  <section id="approach">
+    <p class="sec-eyebrow">How It Works</p>
+    <h2>Three steps. Real results.</h2>
+    <p class="sec-intro">No long contracts, no confusing jargon, no IT department required. Here's exactly what working with Redsong looks like:</p>
+    <div class="how-it-works">
+      <div class="hiw-step">
+        <div class="hiw-icon">💬</div>
+        <div class="hiw-num">Step 1</div>
+        <h3>We Talk</h3>
+        <p>A free 30-minute call where you tell me what's slowing your business down. No pitch — just a real conversation to figure out if we're a fit.</p>
+      </div>
+      <div class="hiw-arrow">→</div>
+      <div class="hiw-step">
+        <div class="hiw-icon">🔧</div>
+        <div class="hiw-num">Step 2</div>
+        <h3>We Build</h3>
+        <p>I design and implement the right tools for your specific business — connecting them to your actual workflows so everything runs the way it should.</p>
+      </div>
+      <div class="hiw-arrow">→</div>
+      <div class="hiw-step">
+        <div class="hiw-icon">😌</div>
+        <div class="hiw-num">Step 3</div>
+        <h3>You Breathe</h3>
+        <p>Your team gets their time back. The manual work is gone. And I stay in your corner to keep everything running as your business grows.</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top: 3rem;">
+      <a href="https://calendar.app.google/TD5XZi9iL937SfsC8" class="btn-red" target="_blank">Start with Step 1 — It's Free</a>
+    </div>
+  </section>
+  
+  
+  
+
 
   <!-- SERVICES -->
   <section id="services">
@@ -638,26 +736,28 @@
     <div class="services-strip">
       <div class="svc">
         <div class="svc-num">01</div>
-        <h3>AI Foundation Build</h3>
-        <p>Assess your operations, select the right AI tools, and implement a connected foundation that actually works in your business.</p>
+        <h3>Get Set Up</h3>
+        <p>We assess your operations, pick the right tools, and build an AI foundation that actually fits the way your business runs — not a generic demo.</p>
       </div>
       <div class="svc">
         <div class="svc-num">02</div>
-        <h3>Process Automation</h3>
-        <p>Map and eliminate your most painful manual workflows — from client intake and reporting to invoicing, follow-ups, and internal handoffs.</p>
+        <h3>Stop Doing It Manually</h3>
+        <p>We map your most painful, repetitive tasks — invoicing, follow-ups, intake, reporting — and automate them so your team never has to touch them again.</p>
       </div>
       <div class="svc">
         <div class="svc-num">03</div>
-        <h3>AI Training</h3>
-        <p>Upskill your understanding of AI tools and capabilities to provide your business with a stronger technical understanding and foundation.</p>
+        <h3>Learn What AI Can Do for You</h3>
+        <p>Hands-on training so you and your team actually understand the tools — no jargon, no overwhelm, just practical skills you can use right away.</p>
       </div>
-     
       <div class="svc">
         <div class="svc-num">04</div>
-        <h3>Analytics &amp; Reporting</h3>
-        <p>Clear visibility into the numbers that matter — dashboards and reports your team will actually use to make faster, smarter decisions.</p>
+        <h3>See Your Numbers Clearly</h3>
+        <p>Simple dashboards and reports that show you what's actually happening in your business — so you can make faster decisions with confidence.</p>
       </div>
+    </div>
   </section>
+
+
 
   <!-- WHO WE SERVE + WHY REDSONG -->
   <section id="clients">
@@ -688,64 +788,15 @@
     </div>
   </section>
 
-  <!-- WHY NOW -->
-  <section id="why-now">
-    <div class="why-stat-box">
-      <div class="big">83%</div>
-      <div class="small">of SMBs are not<br>using AI in any<br>meaningful way</div>
-    </div>
-    <div>
-      <p class="sec-eyebrow">Why the Timing Is Right</p>
-      <h2>The gap between early movers and everyone else is widening now</h2>
-      <p>
-        AI tools have crossed a threshold: they are <strong>powerful, affordable, and ready to deploy</strong> in businesses of any size. But implementation still requires expertise most small businesses don't have in-house — and that's exactly where the opportunity lives.<br><br>
-        <strong>The businesses building their AI foundation today will operate with advantages their competitors won't be able to replicate in two years.</strong> Redsong exists to make sure your business is one of them.
-      </p>
-    </div>
-  </section>
 
-  <!-- APPROACH -->
-  <section id="approach">
-    <p class="sec-eyebrow">How We Work</p>
-    <h2>A Structured Path to Results</h2>
-    <p class="sec-intro">Every engagement follows a proven lifecycle that embeds quality and usability at every stage — no surprises, no scope creep.</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div>
-          <h3>Discovery &amp; Assessment</h3>
-          <p>We start by understanding your most critical pain points, existing tools, data landscape, and where your team's time is actually going.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div>
-          <h3>Design &amp; Tool Selection</h3>
-          <p>We map the right AI and automation stack to your specific workflows — not a generic off-the-shelf recommendation, but a purpose-built plan.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div>
-          <h3>Build, Test &amp; Train</h3>
-          <p>We implement, validate with your team, and run structured testing before anything goes live. Your staff is trained and confident before we hand over the keys.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div>
-          <h3>Launch &amp; Ongoing Support</h3>
-          <p>Go-live with hypercare support, then transition to an ongoing retainer — maintaining, optimizing, and expanding your foundation as your needs evolve.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+
+
 
   <!-- CTA BAND -->
   <section id="book">
-    <h2>Ready to see what your business looks like when it runs on AI?</h2>
-    <p>Book a free 30-minute discovery call. No pitch, no pressure — just a real conversation about your biggest operational challenges.</p>
-    <a href="https://calendar.app.google/TD5XZi9iL937SfsC8" class="btn-white" target="_blank">Schedule a Discovery Call →</a>
+    <h2>Let's figure out what's slowing you down.</h2>
+    <p>30 minutes. Free. No jargon, no sales pitch — just an honest conversation about your business and whether I can help.</p>
+    <a href="https://calendar.app.google/TD5XZi9iL937SfsC8" class="btn-white" target="_blank">Let's Talk →</a>
   </section>
 
   <!-- CONTACT -->
@@ -757,8 +808,8 @@
         <p>Whether you're exploring AI for the first time or looking to scale what you've started — let's talk. I'm based in Grand Rapids and work with businesses across West Michigan and beyond.</p>
         <div class="c-row"><span class="ico">👤</span><span>Allison Stroud, Founder</span></div>
         <div class="c-row"><span class="ico">📧</span><a href="mailto:allison@redsongconsulting.com">allison@redsongconsulting.com</a></div>
-        <div class="c-row"><span class="ico">📞</span><a href="tel:7732209147">773.220.9147</a></div>
-        <div class="c-row"><span class="ico">💼</span><a href="https://linkedin.com/in/allisongstroud" target="_blank">linkedin.com/in/allisongstroud</a></div>
+        <div class="c-row"><span class="ico">📞</span><a href="tel:6162326685">616.232.6685</a></div>
+        <div class="c-row"><span class="ico">💼</span><a href="https://linkedin.com/in/redsong-consulting" target="_blank">linkedin.com/in/redsong-consulting</a></div>
         <div class="c-row"><span class="ico">📅</span><a href="https://calendar.app.google/TD5XZi9iL937SfsC8" target="_blank">Book a free 30-minute call</a></div>
       </div>
       <form onsubmit="handleSubmit(event)">
