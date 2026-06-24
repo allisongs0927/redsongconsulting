@@ -166,7 +166,7 @@
       width: 100%;
     }
     .hero-logo img {
-      width: 100%;
+      width: clamp(180px, 75%, 360px);
       height: auto;
       display: block;
     }
@@ -576,7 +576,7 @@
         border-bottom: 1px solid var(--rule);
         align-items: center;
       }
-      .hero-logo img { width: 60%; height: auto; }
+      .hero-logo img { width: clamp(140px, 55%, 260px); }
       .hero-eyebrow { font-size: 1.1rem; }
       .hero-left {
         width: 100%;
@@ -605,7 +605,7 @@
 
     @media (max-width: 540px) {
       .services-strip { grid-template-columns: 1fr; }
-      .hero-logo img { width: 50%; height: auto; }
+      .hero-logo img { width: clamp(120px, 45%, 200px); }
       .hero-kicker { font-size: clamp(1.7rem, 7vw, 2.4rem); }
       .btn-red { width: 100%; justify-content: center; }
     }
