@@ -166,7 +166,7 @@
       width: 100%;
     }
     .hero-logo img {
-      width: clamp(200px, 75%, 500px);
+      width: clamp(280px, 90%, 700px);
       height: auto;
       display: block;
     }
@@ -576,7 +576,7 @@
         border-bottom: 1px solid var(--rule);
         align-items: center;
       }
-      .hero-logo img { width: clamp(140px, 55%, 260px); }
+      .hero-logo img { width: clamp(200px, 75%, 480px); }
       .hero-eyebrow { font-size: 1.1rem; }
       .hero-left {
         width: 100%;
@@ -605,7 +605,7 @@
 
     @media (max-width: 540px) {
       .services-strip { grid-template-columns: 1fr; }
-      .hero-logo img { width: clamp(120px, 45%, 200px); }
+      .hero-logo img { width: clamp(160px, 70%, 320px); }
       .hero-kicker { font-size: clamp(1.7rem, 7vw, 2.4rem); }
       .btn-red { width: 100%; justify-content: center; }
     }
@@ -838,12 +838,12 @@
       const btn = document.getElementById('submit-btn');
       const status = document.getElementById('form-status');
 
-      if (FORMSPREE_ID === 'mkololjr') {
-        status.style.display = 'block';
-        status.style.color = '#C8352A';
-        status.textContent = 'Form not yet connected. See setup instructions in the page source.';
-        return;
-      }
+     // if (FORMSPREE_ID === 'mkololjr') {
+       // status.style.display = 'block';
+        //status.style.color = '#C8352A';
+        //status.textContent = 'Form not yet connected. See setup instructions in the page source.';
+        //return;
+      //}
 
       btn.textContent = 'Sending…';
       btn.disabled = true;
